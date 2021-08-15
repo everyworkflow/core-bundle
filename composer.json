@@ -2,6 +2,7 @@
     "name": "everyworkflow/core-bundle",
     "description": "Core bundle for every workflow project.",
     "type": "package",
+    "license": "MIT",
     "authors": [
         {
             "name": "EveryWorkflow",
