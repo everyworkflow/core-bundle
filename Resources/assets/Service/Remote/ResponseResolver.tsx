@@ -14,11 +14,11 @@ const ResponseResolver = async (res: any, url: string): Promise<any> => {
         return res;
     } else if (statusCode === 404 || statusCode === 405) {
         throw new Error('Remote could not resolve!');
-    } else if (statusCode === 500) {
-        throw new Error('Something went wrong!');
-    } else if (statusCode === 400) {
+    } else if (statusCode === 400 || statusCode === 401) {
         res = await res.json();
         throw new Error(res.message);
+    } else {
+        throw new Error('Something went wrong!');
     }
 
     return null;

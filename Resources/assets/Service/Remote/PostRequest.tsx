@@ -5,12 +5,16 @@
 import ResponseResolver from './ResponseResolver';
 import UrlHelper from "@EveryWorkflow/CoreBundle/Helper/UrlHelper";
 
-const PostRequest = async (endPoint: string, data: any | Array<any>) => {
+const PostRequest = async (endPoint: string, data: any | Array<any>, options: any = {}) => {
     const url = UrlHelper.buildApiUrl(endPoint);
 
     const fetchOptions = {
         method: 'post',
         body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        ...options,
     };
 
     if (Number(process.env.REACT_DEBUG) && Number(process.env.REACT_REMOTE_DEBUG) > 0) {

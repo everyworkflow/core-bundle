@@ -1,7 +1,14 @@
 const LocalStorage = {
     get: (key: string, isJson = true): string | null => {
         if (isJson) {
-            return JSON.parse(localStorage.getItem(key) ?? '');
+            try {
+                const jsonData = JSON.parse(localStorage.getItem(key) ?? '');
+                return jsonData;
+            } catch (error: any) {
+                // Ignore error is unable to parse data
+            }
+
+            return null;
         }
         return localStorage.getItem(key);
     },
