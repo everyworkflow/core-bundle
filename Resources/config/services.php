@@ -6,6 +6,8 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use EveryWorkflow\CoreBundle\EventListener\KernelExceptionListener;
+use EveryWorkflow\CoreBundle\Model\CoreConfigProvider;
 use EveryWorkflow\CoreBundle\Model\DataObject;
 use EveryWorkflow\CoreBundle\Model\DataObjectFactory;
 use EveryWorkflow\CoreBundle\Model\DataObjectFactoryInterface;
@@ -24,4 +26,10 @@ return function (ContainerConfigurator $configurator) {
 
     $services->set(DataObjectInterface::class, DataObject::class)->share(false);
     $services->set(DataObjectFactoryInterface::class, DataObjectFactory::class);
+
+    $services->set(CoreConfigProvider::class)
+        ->arg('$configs', '%core%');
+
+    $services->set(KernelExceptionListener::class)
+        ->tag('kernel.event_listener', ['event' => 'kernel.exception']);
 };

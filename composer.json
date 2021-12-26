@@ -11,12 +11,12 @@
     ],
     "require": {
         "php": "^8.0",
-        "doctrine/annotations": "^1.11",
-        "opis/json-schema": "^1.0",
-        "symfony/cache": "5.4.x",
-        "symfony/uid": "5.4.x",
-        "nelmio/cors-bundle": "^2.1",
-        "symfony/webpack-encore-bundle": "^1.11"
+        "doctrine/annotations": "^1.13",
+        "opis/json-schema": "^2.0",
+        "symfony/cache": "6.0.x",
+        "symfony/uid": "6.0.x",
+        "nelmio/cors-bundle": "^2.2",
+        "symfony/webpack-encore-bundle": "^1.13"
     },
     "autoload": {
         "psr-4": {
