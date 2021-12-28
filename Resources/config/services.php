@@ -12,6 +12,7 @@ use EveryWorkflow\CoreBundle\Model\DataObject;
 use EveryWorkflow\CoreBundle\Model\DataObjectFactory;
 use EveryWorkflow\CoreBundle\Model\DataObjectFactoryInterface;
 use EveryWorkflow\CoreBundle\Model\DataObjectInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 return function (ContainerConfigurator $configurator) {
     $services = $configurator
@@ -32,4 +33,6 @@ return function (ContainerConfigurator $configurator) {
 
     $services->set(KernelExceptionListener::class)
         ->tag('kernel.event_listener', ['event' => 'kernel.exception']);
+
+    $services->alias(ContainerInterface::class, 'service_container');
 };

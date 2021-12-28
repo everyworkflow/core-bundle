@@ -46,7 +46,9 @@ class ArrayValidation extends AbstractValidation
             return $currentRules['rules'];
         }
 
-        return [];
+        return [
+            'type' => 'string',
+        ];
     }
 
     protected function transform(mixed $value): mixed
