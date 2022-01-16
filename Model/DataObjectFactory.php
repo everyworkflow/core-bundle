@@ -14,4 +14,14 @@ class DataObjectFactory implements DataObjectFactoryInterface
     {
         return new DataObject($data);
     }
+
+    public function createFromClassName(string $className, array $data = []): DataObjectInterface
+    {
+        return new $className($data);
+    }
+
+    public function createObjectFromClassName(string $className, array $data = []): mixed
+    {
+        return new $className($this->create($data));
+    }
 }

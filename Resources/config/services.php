@@ -28,9 +28,6 @@ return function (ContainerConfigurator $configurator) {
     $services->set(DataObjectInterface::class, DataObject::class)->share(false);
     $services->set(DataObjectFactoryInterface::class, DataObjectFactory::class);
 
-    $services->set(CoreConfigProvider::class)
-        ->arg('$configs', '%core%');
-
     $services->set(KernelExceptionListener::class)
         ->tag('kernel.event_listener', ['event' => 'kernel.exception']);
 

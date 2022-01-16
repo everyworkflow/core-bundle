@@ -11,8 +11,8 @@ namespace EveryWorkflow\CoreBundle\Model;
 interface BaseConfigProviderInterface
 {
     /**
-     * @param string|null $path
+     * @param string|null $code
      * @return mixed
      */
-    public function get(?string $path = null): mixed;
+    public function get(?string $code = null): mixed;
 }
