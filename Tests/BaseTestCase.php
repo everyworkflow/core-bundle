@@ -16,25 +16,30 @@ use EveryWorkflow\CoreBundle\Model\CoreConfigProviderInterface;
 use EveryWorkflow\CoreBundle\Model\DataObjectFactory;
 use EveryWorkflow\CoreBundle\Model\DataObjectFactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class BaseTestCase extends KernelTestCase
 {
-    //    protected function getContainer(): ContainerInterface
-    //    {
-    //        $kernel = $this->bootKernel([]);
-    //        $container = $kernel->getContainer();
-    //        return $container;
-    //    }
-
     public function getDataObjectFactory(): DataObjectFactoryInterface
     {
         return new DataObjectFactory();
     }
 
-    public function getCoreConfigProvider(): CoreConfigProviderInterface
+    public function getCoreConfigProvider(array $configs = []): CoreConfigProviderInterface
     {
-        return new CoreConfigProvider($this->getContainer()->getParameter('core'));
+        return new CoreConfigProvider([
+            'date_time' => [
+                'date_time_format' => 'Y-m-d H:i:s',
+                'time_zone' => 'Asia/Kathmandu',
+            ],
+            'validation_types' => [
+                'array' => 'EveryWorkflow\CoreBundle\Validation\Type\ArrayValidation',
+                'string' => 'EveryWorkflow\CoreBundle\Validation\Type\StringValidation',
+                'number' => 'EveryWorkflow\CoreBundle\Validation\Type\NumberValidation',
+                'boolean' => 'EveryWorkflow\CoreBundle\Validation\Type\BooleanValidation',
+                'date_time' => 'EveryWorkflow\CoreBundle\Validation\Type\DateTimeValidation',
+            ],
+            ...$configs,
+        ]);
     }
 
     protected function getValidatorFactory(): ValidatorFactoryInterface
