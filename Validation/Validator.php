@@ -11,8 +11,6 @@ namespace EveryWorkflow\CoreBundle\Validation;
 use Doctrine\Inflector\InflectorFactory;
 use EveryWorkflow\CoreBundle\Factory\ValidationTypeFactoryInterface;
 use EveryWorkflow\CoreBundle\Support\ArrayableInterface;
-use EveryWorkflow\CoreBundle\Validation\Type\AbstractValidation;
-use EveryWorkflow\CoreBundle\Validation\Type\StringValidation;
 use ReflectionClass;
 
 class Validator implements ValidatorInterface
