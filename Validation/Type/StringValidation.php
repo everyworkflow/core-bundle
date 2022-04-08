@@ -52,6 +52,26 @@ class StringValidation extends AbstractValidation
         return $this->getData(self::KEY_PATTERN);
     }
 
+    protected function validateRequired($value): ?bool
+    {
+        if ($this->isRequired() && $value === '') {
+            $this->errorBag->addError(
+                $this->getProperty(),
+                sprintf('%s is required.', $this->getPropertyName())
+            );
+
+            return false;
+        }
+
+        if (!$this->isRequired() && $value === '') {
+            $this->setDefaultIfNot();
+
+            return true;
+        }
+
+        return null;
+    }
+
     protected function validateLength($value): ?bool
     {
         if (null !== $this->getMinLength() && strlen($value) < $this->getMinLength()) {

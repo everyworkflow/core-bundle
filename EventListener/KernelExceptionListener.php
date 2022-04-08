@@ -34,6 +34,13 @@ class KernelExceptionListener
                     'detail' => $exception->getMessage(),
                     'errors' => $validator->getAllErrors(),
                 ], Response::HTTP_BAD_REQUEST));
+            } else {
+                $event->setResponse(new JsonResponse([
+                    'title' => 'An error occurred',
+                    'status' => Response::HTTP_BAD_REQUEST,
+                    'detail' => $exception->getMessage(),
+                    'errors' => [],
+                ], Response::HTTP_BAD_REQUEST));
             }
         } else if ($exception instanceof HttpException) {
             $event->setResponse(new JsonResponse([
