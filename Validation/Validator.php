@@ -50,7 +50,7 @@ class Validator implements ValidatorInterface
 
     public function hasErrors(): bool
     {
-        if ($this->getAllErrors() > 0) {
+        if (count($this->getAllErrors()) > 0) {
             return true;
         }
 
