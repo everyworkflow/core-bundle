@@ -112,7 +112,7 @@ class DateTimeValidation extends AbstractValidation
 
     protected function _validate(mixed $value): bool
     {
-        if (!$this->isRequired() && $value === null) {
+        if (!$this->isRequired() && ($value === null || $value === '')) {
             $this->setValidData($value);
             return true;
         }
