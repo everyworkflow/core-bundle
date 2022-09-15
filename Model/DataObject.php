@@ -51,6 +51,18 @@ class DataObject implements DataObjectInterface
         return $this->data[$key] ?? null;
     }
 
+    /**
+     * @param string $key
+     * @return self
+     */
+    public function unsetData(string $key): self
+    {
+        if (isset($this->data[$key])) {
+            unset($this->data[$key]);
+        }
+        return $this;
+    }
+
     public function resetData(array $data): self
     {
         $this->data = $data;

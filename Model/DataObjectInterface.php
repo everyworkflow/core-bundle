@@ -32,5 +32,11 @@ interface DataObjectInterface extends ArrayableInterface
      */
     public function getData(string $key) : mixed;
 
+    /**
+     * @param string $key
+     * @return self
+     */
+    public function unsetData(string $key): self;
+
     public function resetData(array $data): self;
 }
