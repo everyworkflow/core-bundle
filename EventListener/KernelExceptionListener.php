@@ -16,7 +16,7 @@ class KernelExceptionListener
 {
     public function onKernelException(ExceptionEvent $event)
     {
-        if (in_array('application/json', $event->getRequest()?->getAcceptableContentTypes() ?? [])) {
+        if (in_array('application/json', $event->getRequest()?->getAcceptableContentTypes() ?? []) || $event->getRequest()?->getContentType() === 'json') {
             $this->throwForApi($event);
         }
     }
